@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mono",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "5.3.0",
+    "applicationType": "monolith",
+    "baseName": "backend",
+    "packageName": "com.mono",
+    "packageFolder": "com/mono",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "M2FmMTQ1YTFmZmUwNDM1YmQzZGU1NDkzZjk2Y2I2ODgwMzM3MTEyN2VmMjUyY2UzYjEwNTc0OTU5MzNhMGI3YWRlODYyNTNhNzgxZjhmNmEzNDhhMTBhYWEzY2M0YTEwOTVmMDM1MDU1YzJiMTg0N2NiNTQ1OGRmMTNiZjRjZmE=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "en"
+    ]
+  }
+}
