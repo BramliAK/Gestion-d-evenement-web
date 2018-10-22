@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-localisation-heading" jhiTranslate="backendApp.localisation.home.createOrEditLabel">Create or edit a Localisation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!localisation.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="localisation.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.localisation.nomemplacement" for="field_nomemplacement">Nomemplacement</label>
+                    <input type="text" class="form-control" name="nomemplacement" id="field_nomemplacement"
+                        [(ngModel)]="localisation.nomemplacement" required/>
+                    <div [hidden]="!(editForm.controls.nomemplacement?.dirty && editForm.controls.nomemplacement?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomemplacement?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.localisation.emplacement" for="field_emplacement">Emplacement</label>
+                    <select class="form-control" name="emplacement" [(ngModel)]="localisation.emplacement" id="field_emplacement"  required>
+                        <option value="Ariana">{{'backendApp.Emplacement.Ariana' | translate}}</option>
+                        <option value="Beja">{{'backendApp.Emplacement.Beja' | translate}}</option>
+                        <option value="Ben_Arous">{{'backendApp.Emplacement.Ben_Arous' | translate}}</option>
+                        <option value="Bizerte">{{'backendApp.Emplacement.Bizerte' | translate}}</option>
+                        <option value="Gabes">{{'backendApp.Emplacement.Gabes' | translate}}</option>
+                        <option value="Gafsa">{{'backendApp.Emplacement.Gafsa' | translate}}</option>
+                        <option value="Jendouba">{{'backendApp.Emplacement.Jendouba' | translate}}</option>
+                        <option value="Kairouan">{{'backendApp.Emplacement.Kairouan' | translate}}</option>
+                        <option value="Kasserine">{{'backendApp.Emplacement.Kasserine' | translate}}</option>
+                        <option value="Kebili">{{'backendApp.Emplacement.Kebili' | translate}}</option>
+                        <option value="Kef">{{'backendApp.Emplacement.Kef' | translate}}</option>
+                        <option value="Mahdia">{{'backendApp.Emplacement.Mahdia' | translate}}</option>
+                        <option value="Manouba">{{'backendApp.Emplacement.Manouba' | translate}}</option>
+                        <option value="Medenine">{{'backendApp.Emplacement.Medenine' | translate}}</option>
+                        <option value="Monastir">{{'backendApp.Emplacement.Monastir' | translate}}</option>
+                        <option value="Nabeul">{{'backendApp.Emplacement.Nabeul' | translate}}</option>
+                        <option value="Sfax">{{'backendApp.Emplacement.Sfax' | translate}}</option>
+                        <option value="Sidi_Bouzid">{{'backendApp.Emplacement.Sidi_Bouzid' | translate}}</option>
+                        <option value="Siliana">{{'backendApp.Emplacement.Siliana' | translate}}</option>
+                        <option value="Sousse">{{'backendApp.Emplacement.Sousse' | translate}}</option>
+                        <option value="Tataouine">{{'backendApp.Emplacement.Tataouine' | translate}}</option>
+                        <option value="Tozeur">{{'backendApp.Emplacement.Tozeur' | translate}}</option>
+                        <option value="Tunis">{{'backendApp.Emplacement.Tunis' | translate}}</option>
+                        <option value="Zaghouan">{{'backendApp.Emplacement.Zaghouan' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.emplacement?.dirty && editForm.controls.emplacement?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.emplacement?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.localisation.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                        [(ngModel)]="localisation.longitude" required/>
+                    <div [hidden]="!(editForm.controls.longitude?.dirty && editForm.controls.longitude?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.longitude?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.longitude?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.localisation.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                        [(ngModel)]="localisation.latitude" required/>
+                    <div [hidden]="!(editForm.controls.latitude?.dirty && editForm.controls.latitude?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.latitude?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.latitude?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

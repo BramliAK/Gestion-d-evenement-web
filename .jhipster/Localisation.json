@@ -1,0 +1,52 @@
+{
+    "name": "Localisation",
+    "fields": [
+        {
+            "fieldName": "nomemplacement",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "emplacement",
+            "fieldType": "Emplacement",
+            "fieldValues": "Ariana,Beja,Ben_Arous,Bizerte,Gabes,Gafsa,Jendouba,Kairouan,Kasserine,Kebili,Kef,Mahdia,Manouba,Medenine,Monastir,Nabeul,Sfax,Sidi_Bouzid,Siliana,Sousse,Tataouine,Tozeur,Tunis,Zaghouan",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "longitude",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "latitude",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "evenement",
+            "otherEntityName": "evenement",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "localisation"
+        }
+    ],
+    "changelogDate": "20181022200214",
+    "entityTableName": "localisation",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

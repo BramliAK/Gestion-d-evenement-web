@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-evenement-heading" jhiTranslate="backendApp.evenement.home.createOrEditLabel">Create or edit a Evenement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!evenement.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="evenement.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.evenement.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                        [(ngModel)]="evenement.nom" required/>
+                    <div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.evenement.description" for="field_description">Description</label>
+                    <textarea class="form-control" name="description" id="field_description"
+                        [(ngModel)]="evenement.description" required></textarea>
+                    <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.description?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.evenement.typeevnet" for="field_typeevnet">Typeevnet</label>
+                    <select class="form-control" name="typeevnet" [(ngModel)]="evenement.typeevnet" id="field_typeevnet"  required>
+                        <option value="Film">{{'backendApp.Typeevent.Film' | translate}}</option>
+                        <option value="Theatre">{{'backendApp.Typeevent.Theatre' | translate}}</option>
+                        <option value="Club">{{'backendApp.Typeevent.Club' | translate}}</option>
+                        <option value="Games">{{'backendApp.Typeevent.Games' | translate}}</option>
+                        <option value="Livres">{{'backendApp.Typeevent.Livres' | translate}}</option>
+                        <option value="Autres">{{'backendApp.Typeevent.Autres' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.typeevnet?.dirty && editForm.controls.typeevnet?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.typeevnet?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.evenement.image" for="field_image">Image</label>
+                    <div>
+                        <img [src]="'data:' + evenement.imageContentType + ';base64,' + evenement.image" style="max-height: 100px;" *ngIf="evenement.image" alt="evenement image"/>
+                        <div *ngIf="evenement.image" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{evenement.imageContentType}}, {{byteSize(evenement.image)}}</span>
+                            <button type="button" (click)="clearInputImage('image', 'imageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image" (change)="setFileData($event, evenement, 'image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image" id="field_image"
+                        [(ngModel)]="evenement.image" required/>
+                    <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                        [(ngModel)]="evenement.imageContentType" />
+                    <div [hidden]="!(editForm.controls.image?.dirty && editForm.controls.image?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.image?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="backendApp.evenement.prix" for="field_prix">Prix</label>
+                    <input type="number" class="form-control" name="prix" id="field_prix"
+                        [(ngModel)]="evenement.prix" />
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="backendApp.evenement.dateevent" for="field_dateevent">Dateevent</label>
+                    <select class="form-control" id="field_dateevent" multiple name="dateevent" [(ngModel)]="evenement.dateevents">
+                        <option [ngValue]="getSelected(evenement.dateevents, dateeventOption)" *ngFor="let dateeventOption of dateevents; trackBy: trackDateeventById">{{dateeventOption.date}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="backendApp.evenement.localisation" for="field_localisation">Localisation</label>
+                    <select class="form-control" id="field_localisation" multiple name="localisation" [(ngModel)]="evenement.localisations">
+                        <option [ngValue]="getSelected(evenement.localisations, localisationOption)" *ngFor="let localisationOption of localisations; trackBy: trackLocalisationById">{{localisationOption.nomemplacement}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

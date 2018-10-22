@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="backendApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendApp.reservation.date">Date</span></dt>
+                <dd>
+                    <span>{{reservation.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.reservation.user">User</span></dt>
+                <dd>
+                    {{reservation.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="backendApp.reservation.evenement">Evenement</span></dt>
+                <dd>
+                    <div *ngIf="reservation.evenement">
+                        <a [routerLink]="['/evenement', reservation.evenement?.id, 'view']">{{reservation.evenement?.nom}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

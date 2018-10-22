@@ -1,0 +1,23 @@
+
+{
+    "backendApp": {
+        "dateevent" : {
+            "home": {
+                "title": "Dateevents",
+                "createLabel": "Créer un nouveau Dateevent",
+                "createOrEditLabel": "Créer ou éditer un Dateevent"
+            },
+            "created": "Un nouveau Dateevent a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Dateevent avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Dateevent avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Dateevent {{ id }} ?"
+            },
+            "detail": {
+                "title": "Dateevent"
+            },
+            "date": "Date",
+            "evenement": "Evenement"
+        }
+    }
+}

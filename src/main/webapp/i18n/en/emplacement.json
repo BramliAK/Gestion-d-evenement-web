@@ -1,0 +1,31 @@
+{
+    "backendApp": {
+        "Emplacement" : {
+            "null": "",
+            "Ariana": "Ariana",
+            "Beja": "Beja",
+            "Ben_Arous": "Ben_Arous",
+            "Bizerte": "Bizerte",
+            "Gabes": "Gabes",
+            "Gafsa": "Gafsa",
+            "Jendouba": "Jendouba",
+            "Kairouan": "Kairouan",
+            "Kasserine": "Kasserine",
+            "Kebili": "Kebili",
+            "Kef": "Kef",
+            "Mahdia": "Mahdia",
+            "Manouba": "Manouba",
+            "Medenine": "Medenine",
+            "Monastir": "Monastir",
+            "Nabeul": "Nabeul",
+            "Sfax": "Sfax",
+            "Sidi_Bouzid": "Sidi_Bouzid",
+            "Siliana": "Siliana",
+            "Sousse": "Sousse",
+            "Tataouine": "Tataouine",
+            "Tozeur": "Tozeur",
+            "Tunis": "Tunis",
+            "Zaghouan": "Zaghouan"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "backendApp": {
+        "Typeevent" : {
+            "null": "",
+            "Film": "Film",
+            "Theatre": "Theatre",
+            "Club": "Club",
+            "Games": "Games",
+            "Livres": "Livres",
+            "Autres": "Autres"
+        }
+    }
+}

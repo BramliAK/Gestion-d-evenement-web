@@ -1,0 +1,53 @@
+entity Evenement {
+nom String required,
+description TextBlob required,
+typeevnet Typeevent required,
+image ImageBlob required,
+prix Float 
+}
+entity Dateevent {
+ date Instant required
+}
+entity Localisation {
+nomemplacement String required,
+emplacement Emplacement required,
+longitude Float required,
+latitude Float required
+}
+entity Reservation {
+date Instant required
+}
+entity Commentaire {
+commentaire String required
+}
+
+enum Typeevent {
+	Film, Theatre, Club,  Games, Livres, Autres
+}
+
+enum Emplacement {
+	Ariana, Beja, Ben_Arous, Bizerte, Gabes, Gafsa, Jendouba, 
+    Kairouan, Kasserine, Kebili, Kef, Mahdia, Manouba, Medenine,
+    Monastir, Nabeul, Sfax, Sidi_Bouzid, Siliana, Sousse, Tataouine,
+    Tozeur, Tunis, Zaghouan
+}
+
+relationship ManyToMany {
+    Evenement{dateevent(date)} to Dateevent{evenement},
+    Evenement{Localisation(nomemplacement)} to Localisation{evenement}
+}
+relationship ManyToOne {
+    Reservation{user(login)} to User,
+    Reservation{evenement(nom)} to Evenement,
+    Commentaire{user(login)} to User,
+    Commentaire{evenement(nom)} to Evenement,
+}
+
+paginate Reservation  with infinite-scroll
+paginate Evenement, Localisation, Dateevent with pagination
+service all with serviceImpl
+
+
+
+
+ 

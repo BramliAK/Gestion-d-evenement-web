@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="evenement">
+            <h2><span jhiTranslate="backendApp.evenement.detail.title">Evenement</span> {{evenement.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="backendApp.evenement.nom">Nom</span></dt>
+                <dd>
+                    <span>{{evenement.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.description">Description</span></dt>
+                <dd>
+                    <span>{{evenement.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.typeevnet">Typeevnet</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'backendApp.Typeevent.' + evenement.typeevnet}}">{{evenement.typeevnet}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="evenement.image">
+                        <a (click)="openFile(evenement.imageContentType, evenement.image)">
+                            <img [src]="'data:' + evenement.imageContentType + ';base64,' + evenement.image" style="max-width: 100%;" alt="evenement image"/>
+                        </a>
+                        {{evenement.imageContentType}}, {{byteSize(evenement.image)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.prix">Prix</span></dt>
+                <dd>
+                    <span>{{evenement.prix}}</span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.dateevent">Dateevent</span></dt>
+                <dd>
+                    <span *ngFor="let dateevent of evenement.dateevents; let last = last">
+                        <a [routerLink]="['/dateevent', dateevent?.id, 'view' ]">{{dateevent.date}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="backendApp.evenement.localisation">Localisation</span></dt>
+                <dd>
+                    <span *ngFor="let localisation of evenement.localisations; let last = last">
+                        <a [routerLink]="['/localisation', localisation?.id, 'view' ]">{{localisation.nomemplacement}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/evenement', evenement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

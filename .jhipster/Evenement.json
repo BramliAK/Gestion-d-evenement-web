@@ -1,0 +1,67 @@
+{
+    "name": "Evenement",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "typeevnet",
+            "fieldType": "Typeevent",
+            "fieldValues": "Film,Theatre,Club,Games,Livres,Autres",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prix",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "evenement",
+            "relationshipName": "dateevent",
+            "otherEntityName": "dateevent",
+            "otherEntityField": "date",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "evenement",
+            "relationshipName": "localisation",
+            "otherEntityName": "localisation",
+            "otherEntityField": "nomemplacement",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181022200212",
+    "entityTableName": "evenement",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
