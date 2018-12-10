@@ -88,6 +88,7 @@ public class DateeventResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of dateevents in body
      */
+    @CrossOrigin("*")
     @GetMapping("/dateevents")
     @Timed
     public ResponseEntity<List<Dateevent>> getAllDateevents(Pageable pageable) {

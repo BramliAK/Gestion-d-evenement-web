@@ -1,6 +1,7 @@
 package com.mono.repository;
 
 import com.mono.domain.Evenement;
+import com.mono.domain.enumeration.Typeevent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -26,5 +27,7 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long> {
 
     @Query("select evenement from Evenement evenement left join fetch evenement.dateevents left join fetch evenement.localisations where evenement.id =:id")
     Optional<Evenement> findOneWithEagerRelationships(@Param("id") Long id);
+
+    List<Evenement> findEvenementsByTypeevnet(Typeevent type);
 
 }

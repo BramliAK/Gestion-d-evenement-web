@@ -1,5 +1,6 @@
 package com.mono.service.impl;
 
+import com.mono.domain.enumeration.Typeevent;
 import com.mono.service.EvenementService;
 import com.mono.domain.Evenement;
 import com.mono.repository.EvenementRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.List;
 import java.util.Optional;
 /**
  * Service Implementation for managing Evenement.
@@ -60,7 +62,7 @@ public class EvenementServiceImpl implements EvenementService {
     public Page<Evenement> findAllWithEagerRelationships(Pageable pageable) {
         return evenementRepository.findAllWithEagerRelationships(pageable);
     }
-    
+
 
     /**
      * Get one evenement by id.
@@ -73,6 +75,11 @@ public class EvenementServiceImpl implements EvenementService {
     public Optional<Evenement> findOne(Long id) {
         log.debug("Request to get Evenement : {}", id);
         return evenementRepository.findOneWithEagerRelationships(id);
+    }
+
+    @Override
+    public List<Evenement> findEvenementsByTypeevnet(Typeevent type) {
+        return evenementRepository.findEvenementsByTypeevnet(type);
     }
 
     /**

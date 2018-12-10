@@ -2,6 +2,8 @@ package com.mono.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.mono.domain.Evenement;
+import com.mono.domain.Localisation;
+import com.mono.domain.enumeration.Typeevent;
 import com.mono.service.EvenementService;
 import com.mono.web.rest.errors.BadRequestAlertException;
 import com.mono.web.rest.util.HeaderUtil;
@@ -22,6 +24,7 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing Evenement.
@@ -35,6 +38,7 @@ public class EvenementResource {
     private static final String ENTITY_NAME = "evenement";
 
     private final EvenementService evenementService;
+
 
     public EvenementResource(EvenementService evenementService) {
         this.evenementService = evenementService;
@@ -115,6 +119,29 @@ public class EvenementResource {
         log.debug("REST request to get Evenement : {}", id);
         Optional<Evenement> evenement = evenementService.findOne(id);
         return ResponseUtil.wrapOrNotFound(evenement);
+    }
+
+
+    @GetMapping("/evenementstypeid/{id}")
+    @Timed
+    public Set<Localisation> getlocalisationformevent (@PathVariable Long id) {
+        Optional<Evenement> e=evenementService.findOne(id);
+
+        return  e.get().getLocalisations();
+    }
+
+    /**
+     * GET  /evenements/:id : get the "id" evenement.
+     *
+     * @param type the id of the evenement to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the evenement, or with status 404 (Not Found)
+     */
+    @GetMapping("/evenementstype/{type}")
+    @Timed
+    public List<Evenement> getEvenementbytype(@PathVariable Typeevent type ) {
+        //log.debug("REST request to get Evenement : {}", type);
+        //Optional<Evenement> evenement = evenementResource.
+        return evenementService.findEvenementsByTypeevnet(type);
     }
 
     /**
